@@ -1,0 +1,47 @@
+{{page-title "CreateRecipe"}}
+<h1>Create a new recipe</h1>
+<form action="">
+  <div class="form-roup">
+    <label>Title</label>
+    <input
+      aria-label="title"
+      type="text"
+      {{on "input" this.updateTitle}}
+      value={{this.title}}
+    />
+  </div>
+
+  <div class="form-roup">
+    <label>Description</label>
+    <input
+      aria-label="description"
+      type="text"
+      {{on "input" this.updateDescription}}
+      value={{this.description}}
+    />
+  </div>
+
+  <div class="form-roup">
+    <label for="">Ingredients</label>
+    <input
+      aria-label="ingredients"
+      type="text"
+      {{on "input" this.updateIngredients}}
+      value={{this.ingredients}}
+    />
+  </div>
+
+  <div class="form-roup">
+    <label for="">Instructions</label>
+    <textarea
+      name=""
+      id=""
+      {{on "input" this.updateInstructions}}
+      value={{this.instructions}}
+    ></textarea>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" {{on "click" this.createRecipe}}>Create Recipe</button>
+  </div>
+</form>
