@@ -37,4 +37,25 @@ export default class RecipeDataService extends Service {
   generateId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
+
+  getFavorites() {
+    return JSON.parse(localStorage.getItem('favorites')) || [];
+  }
+
+  isFavorite(recipeId) {
+    let favorites = this.getFavorites();
+    return favorites.includes(recipeId);
+  }
+
+  toggleFavorite(recipeId, isFavorite) {
+    let favorites = this.getFavorites();
+    if (isFavorite) {
+      if (!favorites.includes(recipeId)) {
+        favorites.push(recipeId);
+      } else {
+        favorites = favorites.filter((id) => id !== recipeId);
+      }
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+  }
 }
